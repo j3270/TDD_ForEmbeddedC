@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../cpputest"
+		},
+		{
+			"path": "../../Unity"
+		}
+	],
+	"settings": {}
+}

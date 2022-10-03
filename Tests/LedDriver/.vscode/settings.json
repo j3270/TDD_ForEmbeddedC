@@ -1,0 +1,8 @@
+{
+    "cmake.configureSettings":
+    {
+        "CMAKE_VERBOSE_MAKEFILE:BOOL":false,
+        "USE_UNITY:BOOL":true,
+        "USE_CPP_U_TEST:BOOL":false,
+    }
+}
