@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "../../Unity"
+			"path": "../../../Unity"
 		}
 	],
 	"settings": {}
