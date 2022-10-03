@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(StdioTestsUnity VERSION 0.1.0)
+
+include(CTest)
+enable_testing()
+
+option(USE_UNITY "Test built with Unity test framework if set." OFF)
+option(USE_CPP_U_TEST "Test built with CppUtest test framework if set." OFF)
+
+if(${USE_UNITY})
+    message(STATUS "Unity test framework selected.")
+
+    include(${CMAKE_CURRENT_SOURCE_DIR}/../unity.cmake)
+
+    set(SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/main.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/SprintfTest.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/SprintfTestRunner.c
+    )
+
+    set(INCLUDE_DIRS ${UNITY_INCLUDE_DIRS})
+
+    set(DEFINES )
+
+elseif(${USE_CPP_U_TEST})
+    message(STATUS "CppUtest test framework selected.")
+else()
+    message(STATUS "No test framework selected, defaulting to CppUtest.")
+endif()
+
+
+set(EXECUTABLE StdioTestsUnity)
+add_executable(${EXECUTABLE} ${SOURCES})
+
+target_include_directories(${EXECUTABLE} PRIVATE ${INCLUDE_DIRS})
+
+target_compile_definitions(${EXECUTABLE} PRIVATE ${DEFINES})
+
+target_link_libraries(${EXECUTABLE} $<TARGET_FILE:unity>)
+
+add_test(
+    NAME "StdioTestsUnity" 
+    COMMAND $<TARGET_FILE:StdioTestsUnity> "-v")
