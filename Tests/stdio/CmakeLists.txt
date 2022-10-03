@@ -7,37 +7,43 @@ enable_testing()
 option(USE_UNITY "Test built with Unity test framework if set." OFF)
 option(USE_CPP_U_TEST "Test built with CppUtest test framework if set." OFF)
 
-if(${USE_UNITY})
-    message(STATUS "Unity test framework selected.")
+include(${CMAKE_CURRENT_SOURCE_DIR}/../testFrameWork.cmake)
 
-    include(${CMAKE_CURRENT_SOURCE_DIR}/../unity.cmake)
+if(${USE_UNITY})
 
     set(SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/main.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/SprintfTest.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/SprintfTestRunner.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/main.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/SprintfTest.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/SprintfTestRunner.c
     )
-
     set(INCLUDE_DIRS ${UNITY_INCLUDE_DIRS})
-
     set(DEFINES )
 
-elseif(${USE_CPP_U_TEST})
-    message(STATUS "CppUtest test framework selected.")
 else()
-    message(STATUS "No test framework selected, defaulting to CppUtest.")
+
+    set(SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/SprintfTest.cpp
+    )
+    set(INCLUDE_DIRS ${CPP_UTEST_INCLUDE_DIRS})
+    set(DEFINES )
+
 endif()
 
-
-set(EXECUTABLE StdioTestsUnity)
+set(EXECUTABLE StdioTest)
 add_executable(${EXECUTABLE} ${SOURCES})
 
 target_include_directories(${EXECUTABLE} PRIVATE ${INCLUDE_DIRS})
 
 target_compile_definitions(${EXECUTABLE} PRIVATE ${DEFINES})
 
-target_link_libraries(${EXECUTABLE} $<TARGET_FILE:unity>)
+if(${USE_UNITY})
+    target_link_libraries(${EXECUTABLE} $<TARGET_FILE:unity>)
+else()
+    target_link_libraries(${EXECUTABLE} $<TARGET_FILE:CppUTest>)
+endif()
+
 
 add_test(
-    NAME "StdioTestsUnity" 
-    COMMAND $<TARGET_FILE:StdioTestsUnity> "-v")
+    NAME "StdioTest" 
+    COMMAND $<TARGET_FILE:StdioTest> "-v")
