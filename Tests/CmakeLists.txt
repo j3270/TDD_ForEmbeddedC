@@ -1,3 +1,2 @@
 
-add_subdirectory(WithCppUtest)
-add_subdirectory(WithUnity)
+add_subdirectory(stdio)
