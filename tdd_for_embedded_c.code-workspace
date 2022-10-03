@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"stdio.h": "c",
+			"unity_memory.h": "c",
+			"unity_fixture.h": "c",
+			"unity.h": "c",
+			"unity_internals.h": "c"
+		}
+	}
+}

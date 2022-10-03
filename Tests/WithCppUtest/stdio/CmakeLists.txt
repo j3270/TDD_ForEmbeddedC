@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(StdioTestsCppUTest VERSION 0.1.0)
+
+include(CTest)
+enable_testing()
+
+add_subdirectory(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../cpputest
+    ${CMAKE_CURRENT_SOURCE_DIR}/build/cpputest
+    EXCLUDE_FROM_ALL
+)
+
+set(SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SprintfTest.cpp
+)
+
+set(CPP_UTEST_INCLUDE_DIRS
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../cpputest/include
+)
+
+set(INCLUDE_DIRS ${CPP_UTEST_INCLUDE_DIRS})
+
+set(DEFINES )
+
+set(EXECUTABLE StdioTestsCppUTest)
+add_executable(${EXECUTABLE} ${SOURCES})
+
+target_include_directories(${EXECUTABLE} PRIVATE ${INCLUDE_DIRS})
+
+target_compile_definitions(${EXECUTABLE} PRIVATE ${DEFINES})
+
+target_link_libraries(${EXECUTABLE} $<TARGET_FILE:CppUTest>)
+
+add_test(
+    NAME "StdioTestsCppUTest" 
+    COMMAND $<TARGET_FILE:StdioTestsCppUTest> "-v")

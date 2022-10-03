@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "msys",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Unity/src/**",
+                "${workspaceFolder}/Unity/extras/memory/src/**",
+                "${workspaceFolder}/Unity/extras/fixture/src/**",
+                "${workspaceFolder}/cpputest/include/CppUTest/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
