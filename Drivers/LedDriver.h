@@ -3,7 +3,9 @@
  * @brief Example driver from TDD for embedded C book
  * 
  */
-#pragma once
+
+#ifndef LED_DRIVER_H
+#define LED_DRIVER_H
 
 /**
  * @brief Initializes LEDs ensuring they are turned off
@@ -25,3 +27,5 @@ void LedDriver_TurnOn(int ledNumber);
  * @param ledNumber - LED to turn off
  */
 void LedDriver_TurnOff(int ledNumber);
+
+#endif
