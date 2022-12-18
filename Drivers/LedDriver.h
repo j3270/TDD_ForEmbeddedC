@@ -28,4 +28,10 @@ void LedDriver_TurnOn(int ledNumber);
  */
 void LedDriver_TurnOff(int ledNumber);
 
+/**
+ * @brief Turns all LEDs on
+ * 
+ */
+void LedDriver_TurnAllOn();
+
 #endif
