@@ -1,4 +1,4 @@
 
 add_subdirectory(stdio)
 add_subdirectory(Drivers/LedDriver)
-#add_subdirectory(Utils/Random)
+add_subdirectory(Utils/Random)
