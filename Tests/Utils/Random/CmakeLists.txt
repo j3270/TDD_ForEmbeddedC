@@ -62,4 +62,4 @@ endif()
 
 add_test(
     NAME "RandomTest" 
-    COMMAND $<TARGET_FILE:LedDriverTest> "-v")
+    COMMAND $<TARGET_FILE:RandomTest> "-v")
