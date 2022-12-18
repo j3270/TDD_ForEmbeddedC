@@ -37,6 +37,7 @@ else()
     #sources for this test w/CppUtest
     set(SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers/LedDriver.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks/RuntimeErrorStub.c
         ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/LedDriverTest.cpp
     )
@@ -44,6 +45,8 @@ else()
     #includes for this test w/CppUtest
     set(INCLUDE_DIRS 
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks
         ${TEST_FRAMEWORK_INCLUDES}
     )
 
