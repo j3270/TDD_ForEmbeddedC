@@ -33,7 +33,7 @@ int Random_Int_InRange(int lower, int upper)
     {
         char message[64];
         sprintf(message, "Random: Lower >= Upper. Lower = %d, Upper = %d\n", lower, upper);
-        RUNTIME_ERROR(message, (upper - lower));
+        RUNTIME_ERROR(message, (lower >= upper));
         return 0;
     }
     else

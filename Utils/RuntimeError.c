@@ -4,10 +4,10 @@
 
 void RuntimeError(const char * message, int parameter, const char * file, int line)
 {
-    printf("Run time error in ");
+    printf("Run time error in file:\n");
     printf(file);
-    printf(": %d\n", line);
-    printf("With message: ");
+    printf(": line, %d\n", line);
+    printf("With message:\n");
     printf(message);
-    printf("\nparameter: %d\n", parameter);
+    printf("parameter: %d\n\n", parameter);
 }
