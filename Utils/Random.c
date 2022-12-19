@@ -1,8 +1,10 @@
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
 #include "Random.h"
+#include "RuntimeError.h"
 
 int Random_Seed(int seed)
 {
@@ -19,13 +21,23 @@ int Random_Seed(int seed)
     return seed_cnt;
 }
 
-int Random_Int(int seed)
+int Random_Int(void)
 {
-    Random_Seed(seed);
+    Random_Seed(0);
     return rand();
 }
 
-int Random_Int_InRange(int seed, int upper, int lower)
+int Random_Int_InRange(int lower, int upper)
 {
-    return ( (Random_Int(seed) % (upper - lower + 1)) + lower );
+    if(lower >= upper)
+    {
+        char message[64];
+        sprintf(message, "Random: Lower >= Upper. Lower = %d, Upper = %d\n", lower, upper);
+        RUNTIME_ERROR(message, (upper - lower));
+        return 0;
+    }
+    else
+    {
+        return ( (Random_Int() % (upper - lower + 1)) + lower );
+    }
 }

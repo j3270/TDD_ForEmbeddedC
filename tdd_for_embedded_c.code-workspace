@@ -12,7 +12,8 @@
 			"unity_fixture.h": "c",
 			"unity.h": "c",
 			"unity_internals.h": "c",
-			"random.h": "c"
+			"random.h": "c",
+			"string": "cpp"
 		}
 	}
 }

@@ -27,7 +27,7 @@ int main(int argc, char * argv[])
     fp = fopen("./Random.csv", "w+");
     for(size_t idx = 0; idx < max_idx; idx++)
     {
-        random_val = Random_Int_InRange(0, upper, lower);
+        random_val = Random_Int_InRange(upper, lower);
 
         min = MIN(min, random_val);
         max = MAX(max, random_val);
