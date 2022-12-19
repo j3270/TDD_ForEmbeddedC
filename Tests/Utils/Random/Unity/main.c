@@ -4,7 +4,7 @@
 
 static void RunAllTests(void)
 {
-    RUN_TEST_GROUP(RandomUtil);
+    RUN_TEST_GROUP(Random);
 }
 
 int main(int argc, const char * argv[])

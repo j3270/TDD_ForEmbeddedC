@@ -17,23 +17,19 @@ int Random_Seed(int seed);
 
 /**
  * @brief Gets a random integer
- * Will seed rand if it hasn't been done already
  * 
- * @param seed - seed value to use other than time (floating adc input ?)
  * @return int - Random Integer
  */
-int Random_Int(int seed);
+int Random_Int(void);
 
 /**
  * @brief Returns a random integer that is >= lower and <= upper
- * Will seed rand if it hasn't been done already
  * 
- * @param seed - seed value to use other than time (floating adc input ?)
  * @param upper - Upper limit of range
  * @param lower - Lower limit of range
  * @return int 
  */
-int Random_Int_InRange(int seed, int upper, int lower);
+int Random_Int_InRange(int lower, int upper);
 
 #endif
 

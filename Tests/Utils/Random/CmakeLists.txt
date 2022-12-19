@@ -16,6 +16,7 @@ if(${USE_UNITY})
     #sources for this test w/Unity
     set(SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils/Random.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks/RuntimeErrorStub.c
         ${CMAKE_CURRENT_SOURCE_DIR}/Unity/main.c
         ${CMAKE_CURRENT_SOURCE_DIR}/Unity/RandomTest.c
         ${CMAKE_CURRENT_SOURCE_DIR}/Unity/RandomTestRunner.c
@@ -24,6 +25,7 @@ if(${USE_UNITY})
     #includes for this test w/Unity
     set(INCLUDE_DIRS 
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks
         ${TEST_FRAMEWORK_INCLUDES}
     )
 
@@ -34,6 +36,7 @@ else()
     #sources for this test w/CppUtest
     set(SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils/Random.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks/RuntimeErrorStub.c
         ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/RandomTest.cpp
     )
@@ -41,6 +44,7 @@ else()
     #includes for this test w/CppUtest
     set(INCLUDE_DIRS 
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks
         ${TEST_FRAMEWORK_INCLUDES}
     )
 
