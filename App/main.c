@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
         max = MAX(max, random_val);
         avg += random_val;
 
-        fprintf(fp, "%d,%d\n", idx, random_val);
+        fprintf(fp, "%zu,%d\n", idx, random_val);
     }
     fclose(fp);
 

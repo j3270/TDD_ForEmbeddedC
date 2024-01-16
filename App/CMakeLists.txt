@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.7.0)
 project(App VERSION 0.1.0)
 
 
@@ -12,7 +12,6 @@ set(INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../Utils
 )
-
 
 set(EXECUTABLE App)
 add_executable(${EXECUTABLE} ${SOURCES})

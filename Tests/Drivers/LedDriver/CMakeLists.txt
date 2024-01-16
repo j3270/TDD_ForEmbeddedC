@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(RandomTest VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.7.0)
+project(LedDriverTest VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
@@ -15,15 +15,16 @@ if(${USE_UNITY})
 
     #sources for this test w/Unity
     set(SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils/Random.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers/LedDriver.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks/RuntimeErrorStub.c
         ${CMAKE_CURRENT_SOURCE_DIR}/Unity/main.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/RandomTest.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/RandomTestRunner.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/LedDriverTest.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/LedDriverTestRunner.c
     )
 
     #includes for this test w/Unity
     set(INCLUDE_DIRS 
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils
         ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks
         ${TEST_FRAMEWORK_INCLUDES}
@@ -35,14 +36,15 @@ else()
 
     #sources for this test w/CppUtest
     set(SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils/Random.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers/LedDriver.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks/RuntimeErrorStub.c
         ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/RandomTest.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/CppUtest/LedDriverTest.cpp
     )
     
     #includes for this test w/CppUtest
     set(INCLUDE_DIRS 
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../Drivers
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../Utils
         ${CMAKE_CURRENT_SOURCE_DIR}/../../Mocks
         ${TEST_FRAMEWORK_INCLUDES}
@@ -50,7 +52,7 @@ else()
 
 endif()
 
-set(EXECUTABLE RandomTest)
+set(EXECUTABLE LedDriverTest)
 add_executable(${EXECUTABLE} ${SOURCES})
 
 target_include_directories(${EXECUTABLE} PRIVATE ${INCLUDE_DIRS})
@@ -65,5 +67,5 @@ endif()
 
 
 add_test(
-    NAME "RandomTest" 
-    COMMAND $<TARGET_FILE:RandomTest> "-v")
+    NAME "LedDriverTest" 
+    COMMAND $<TARGET_FILE:LedDriverTest> "-v")
