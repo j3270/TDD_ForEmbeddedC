@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <cstring>
 #include <string>
 #include "CppUTest/TestHarness.h"
 
