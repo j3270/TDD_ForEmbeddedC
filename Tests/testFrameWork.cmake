@@ -1,47 +1,23 @@
 
-function(build_test_framework arg_path_to_test_framework)
-
-if(${USE_UNITY})
-
-    message(STATUS "Unity test framework selected.")
-
-    if(NOT TARGET unity)
-        
-        set(UNITY_EXTENSION_FIXTURE ON CACHE BOOL "enable extension fixtures")
-        set(UNITY_EXTENSION_MEMORY ON CACHE BOOL "enable extension memory")
-
+function(add_test_framework)
+    if(${USE_UNITY})
+        # Out of tree builds must provide a build dir
         add_subdirectory(
-            ${arg_path_to_test_framework}
+            $ENV{UNITY_HOME}
             ${CMAKE_SOURCE_DIR}/build/Unity
         )
-    endif()
-
-    #includes for framework
-    set(TEST_FRAMEWORK_INCLUDES
-        ${arg_path_to_test_framework}/src
-        ${arg_path_to_test_framework}/extras/fixture/src
-        ${arg_path_to_test_framework}/extras/memory/src
-        PARENT_SCOPE
-    )
-
-else()
-
-    if(${USE_CPP_U_TEST})
-        message(STATUS "CppUtest test framework selected.")
+        set(TEST_FRAMEWORK_INCLUDES
+            $ENV{UNITY_HOME}/src
+            $ENV{UNITY_HOME}/extras/fixture/src
+            $ENV{UNITY_HOME}/extras/memory/src
+            PARENT_SCOPE
+        )
     else()
-        message(STATUS "No test framework selected, defaulting to CppUtest.")
-    endif()
-
-    if(NOT TARGET CppUTest)
+        # Out of tree builds must provide a build dir
         add_subdirectory(
-            ${arg_path_to_test_framework}
+            $ENV{CPPUTEST_HOME}/
             ${CMAKE_SOURCE_DIR}/build/CppUtest
         )
+        set(TEST_FRAMEWORK_INCLUDES $ENV{CPPUTEST_HOME}/include PARENT_SCOPE)
     endif()
-
-    #includes for framework
-    set(TEST_FRAMEWORK_INCLUDES ${arg_path_to_test_framework}/include PARENT_SCOPE)
-    
-endif()
-
 endfunction()

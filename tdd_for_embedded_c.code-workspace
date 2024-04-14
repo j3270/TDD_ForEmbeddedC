@@ -4,16 +4,39 @@
 			"path": "."
 		}
 	],
-	"settings": {
+	"settings": 
+    {
+
+        "cmake.ctestArgs": [""],
+        "cmake.configureSettings":
+        {
+            "CMAKE_VERBOSE_MAKEFILE:BOOL":false,
+            "USE_UNITY:BOOL":false,
+            "USE_CPP_U_TEST:BOOL":true,
+        },
+
+        // Makes Ninja preffered generator over make
+        "cmake.preferredGenerators": [
+            "Ninja",
+            "Unix Makefiles"
+        ],
+
+		// This setting allows us to specify the root CMakeLists.txt file for the CMake extension for VS Code and have different CMake projects; app vs unit tests
+		"cmake.sourceDirectory": [
+			"${workspaceFolder}/App", 
+			"${workspaceFolder}/Tests", 
+		],
+        
+		"cmake.buildDirectory": "${command:cmake.activeFolderPath}/build",
+
+        // This how the cpputest extension knows where the actual executables live
+		"cpputestTestAdapter.testExecutable": "${workspaceFolder}/Tests/build/stdio/StdioTests*;${workspaceFolder}/Tests/build/Drivers/LedDriver/LedDriverTest*;${workspaceFolder}/Tests/build/Utils/Random/RandomTest*",
+
+        // Keeps list from continuously being updated every time a file is opened....
 		"files.associations": {
-			"iostream": "cpp",
-			"stdio.h": "c",
-			"unity_memory.h": "c",
-			"unity_fixture.h": "c",
-			"unity.h": "c",
-			"unity_internals.h": "c",
-			"random.h": "c",
-			"string": "cpp"
+			"*.h": "c",
+			"*.c": "c"
 		}
+
 	}
 }
