@@ -6,9 +6,9 @@ if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
     enable_testing()
     
     option(USE_UNITY "Test built with Unity test framework if set." OFF)
-    option(USE_CPP_U_TEST "Test built with CppUtest test framework if set." OFF)
+    option(USE_CPPUTEST "Test built with CppUtest test framework if set." OFF)
 
-    include(./../testFrameWork.cmake)
+    include(./../../testFrameWork.cmake)
     add_test_framework()   
 endif()
 
@@ -67,12 +67,6 @@ else()
         $<TARGET_FILE:CppUTest> 
         $<TARGET_FILE:CppUTestExt>
     )
-endif()
-
-if(${USE_UNITY})
-    target_link_libraries(${EXECUTABLE} $<TARGET_FILE:unity>)
-else()
-    target_link_libraries(${EXECUTABLE} $<TARGET_FILE:CppUTest>)
 endif()
 
 add_test(

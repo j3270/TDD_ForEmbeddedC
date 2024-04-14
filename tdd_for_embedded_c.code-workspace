@@ -12,7 +12,7 @@
         {
             "CMAKE_VERBOSE_MAKEFILE:BOOL":false,
             "USE_UNITY:BOOL":false,
-            "USE_CPP_U_TEST:BOOL":true,
+            "USE_CPPUTEST:BOOL":false,
         },
 
         // Makes Ninja preffered generator over make
