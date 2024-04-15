@@ -75,7 +75,7 @@ static size_t CircularBuffer_Dump(int * testArray, struct CircularBuffer * circu
     {
         CircularBuffer_Get(circularBuffer, &testVal);
         printf("Circular buffer value = %d\r\n", testVal);
-        printf("Test array val at idx %d= %d\r\n", idx -1, testArray[idx++]);
+        printf("Test array val at idx %lu= %d\r\n", idx -1, testArray[idx++]);
     }
     return idx;
 }
