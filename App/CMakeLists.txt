@@ -4,6 +4,8 @@ project(App VERSION 0.1.0)
 
 set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/main.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/HelloWorld.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Utils/CircularBuffer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../Utils/Random.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../Utils/RuntimeError.c
 )
