@@ -30,7 +30,7 @@
 		"cmake.buildDirectory": "${command:cmake.activeFolderPath}/build",
 
         // This how the cpputest extension knows where the actual executables live
-		"cpputestTestAdapter.testExecutable": "${workspaceFolder}/Tests/build/stdio/StdioTests*;${workspaceFolder}/Tests/build/Drivers/LedDriver/LedDriverTest*;${workspaceFolder}/Tests/build/Utils/Random/RandomTest*",
+		"cpputestTestAdapter.testExecutable": "${workspaceFolder}/Tests/build/stdio/StdioTests*;${workspaceFolder}/Tests/build/Drivers/LedDriver/LedDriverTest*;${workspaceFolder}/Tests/build/Utils/Random/RandomTest*;${workspaceFolder}/Tests/build/Utils/CircularBuffer/CircularBufferTests*",
 
         // Keeps list from continuously being updated every time a file is opened....
 		"files.associations": {

@@ -3,6 +3,7 @@
         {
             "name": "MSYS2",
             "includePath": [
+                "${env:CPPUTEST_HOME}/include/**",
                 "${workspaceFolder}/**"
             ],
             "defines": [
@@ -18,6 +19,7 @@
         {
             "name": "WSL2",
             "includePath": [
+                "${env:CPPUTEST_HOME}/include/**",
                 "${workspaceFolder}/**"
             ],
             "defines": [],

@@ -9,75 +9,47 @@
  * 
  */
 
-#include <string.h>
+#include <stdlib.h>
 #include "CircularBuffer.h"
 
-typedef struct CircularBuffer
+struct CircularBuffer
 {
-    bool isFull;
-    bool isEmpty;
-    int head;
-    int tail;
-    size_t size;
-    int * buffer;
-}CircularBuffer_t;
+   size_t head;
+   size_t tail;
+   int data[10];
+};
 
-struct CircularBuffer * CircularBuffer_Create(size_t size, int defaultVal)
+struct CircularBuffer * CircularBuffer_Create()
 {
-    CircularBuffer_t * circularBuffer = (CircularBuffer_t *) calloc(1, sizeof(CircularBuffer_t));
-    if(circularBuffer != NULL)
-    {
-        circularBuffer->buffer = (int *) calloc(size, sizeof(int));
-        memset(circularBuffer->buffer, defaultVal, size);
-        circularBuffer->size = size;
-        circularBuffer->head = 0;
-        circularBuffer->tail = 0;
-        circularBuffer->isEmpty = true;
-        circularBuffer->isFull = false;
-    }
-    return circularBuffer;
+    struct CircularBuffer * self = calloc(1, sizeof(struct CircularBuffer));
+    return self;
 }
 
-bool CircularBuffer_IsEmpty(struct CircularBuffer * circularBuffer)
+bool CircularBuffer_IsEmpty(struct CircularBuffer * self)
 {
-    return (!circularBuffer->isFull && (circularBuffer->head == circularBuffer->tail));
+    return self->head == self->tail;
 }
 
-bool CircularBuffer_IsFull(struct CircularBuffer * circularBuffer)
+bool CircularBuffer_IsFull(struct CircularBuffer * self)
 {
-    return circularBuffer->isFull;
-}
-
-bool CircularBuffer_Put(struct CircularBuffer * circularBuffer, int data)
-{
-    if(!circularBuffer->isFull)
-    {
-        circularBuffer->head = ((circularBuffer->head + 1) == circularBuffer->size) ? 0 : (circularBuffer->head + 1);
-        circularBuffer->buffer[circularBuffer->head] = data;
-        circularBuffer->isEmpty = false;
-        circularBuffer->isFull = (circularBuffer->head == circularBuffer->tail);
-        return true;
-    }
     return false;
 }
 
-bool CircularBuffer_Get(struct CircularBuffer * circularBuffer, int * data)
-{
-    if(!circularBuffer->isEmpty)
-    {
-        circularBuffer->tail = ((circularBuffer->tail + 1) == circularBuffer->size) ? 0 : (circularBuffer->tail + 1);
-        *data = circularBuffer->buffer[circularBuffer->tail];
-        circularBuffer->isFull = false;
-        circularBuffer->isEmpty = (circularBuffer->head == circularBuffer->tail);
-        return true;
-    }
-    return false;
+void CircularBuffer_Put(struct CircularBuffer * self, int data)
+{ 
+    self->data[self->head] = data;
+    self->head++;
 }
 
-void CircularBuffer_Destroy(struct CircularBuffer * circularBuffer)
+int CircularBuffer_Get(struct CircularBuffer * self)
 {
-    if(circularBuffer != NULL)
-    {
-        free(circularBuffer);
-    }
+    int data = self->data[self->tail];
+    self->tail++;
+    return  data;
+}
+
+
+void CircularBuffer_Destroy(struct CircularBuffer * self)
+{
+    free(self);
 }
