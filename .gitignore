@@ -37,3 +37,5 @@
 **.vscode/*
 !**.vscode/launch.json
 !**.vscode/c_cpp_properties.json
+**tools/cmake/gcovr/*
+!tools/cmake/gcovr/.exists
