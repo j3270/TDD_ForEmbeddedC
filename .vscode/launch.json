@@ -8,7 +8,7 @@
             "name": "App",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/App/build/App",
+            "program": "${workspaceFolder}/tools/cmake/app/build/App",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${fileDirname}",
@@ -29,10 +29,10 @@
             ]
         },
         {
-            "name": "StdioTests",
+            "name": "DriversTests",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Tests/build/stdio/StdioTests",
+            "program": "${workspaceFolder}/tools/cmake/tests/build/drivers/drivers_tests",
             "args": ["-c", "-v"],
             "stopAtEntry": true,
             "cwd": "${fileDirname}",
@@ -53,34 +53,10 @@
             ]
         },
         {
-            "name": "LedDriverTest",
+            "name": "UtilsTests",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Tests/build/Drivers/LedDriver/LedDriverTest",
-            "args": ["-c", "-v"],
-            "stopAtEntry": true,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
-        },
-        {
-            "name": "RandomTest",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/Tests/build/Utils/Random/RandomTest",
+            "program": "${workspaceFolder}/tools/cmake/tests/build/utils/utils_tests",
             "args": ["-c", "-v"],
             "stopAtEntry": true,
             "cwd": "${fileDirname}",
